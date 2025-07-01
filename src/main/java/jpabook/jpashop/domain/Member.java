@@ -16,6 +16,21 @@ public class Member {
     private String street;
     private String zipcode;
 
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
+    private Team team;
+
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
+//    @ManyToMany
+//    @JoinTable(name = "MEMBER_PRODUCT") // 중간 테이블
+//    private List<Product> products = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<MemberProduct> memberProducts = new ArrayList<>();
+
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
 
