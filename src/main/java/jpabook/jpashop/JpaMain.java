@@ -4,11 +4,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.OrderItem;
-import jpabook.jpashop.domain.Team;
+import jpabook.jpashop.domain.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class JpaMain {
@@ -20,19 +18,29 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
+//            Movie movie = new Movie();
+//            movie.setDirector("aaaa");
+//            movie.setActor("bbbb");
+//            movie.setName("바람과 함께 사라지다");
+//            movie.setPrice(10000);
+//            em.persist(movie);
+//
+//            em.flush();
+//            em.clear();
+//
+//            Movie findMove = em.find(Movie.class, movie.getId());
+//            System.out.println("findMove = " + findMove);
 
 //            Member member = new Member();
-//            member.setUsername("member1");
-//            em.persist(member);
-//
-//            Team team = new Team();
-//            team.setName("TeamA");
-//            team.getMembers().add(member);
-//            em.persist(team);
-            // 이렇게 하면 member 객체에 team이 자동으로 설정되지 않음
+//            member.setUsername("user1");
+//            member.setCreatedBy("kim");
+//            member.setCreatedDate(LocalDateTime.now());
 
-            Order order = new Order();
-            order.addOrderItem(new OrderItem());
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("김영한");
+            em.persist(book);
+
             tx.commit();
         }  catch (Exception e) {
             tx.rollback();

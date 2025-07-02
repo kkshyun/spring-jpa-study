@@ -12,5 +12,6 @@ public class MemberProduct {
     private Member member;
 
     @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
     private Product product;
 }
